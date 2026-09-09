@@ -4,6 +4,8 @@
 const artworkSection = document.querySelector("#artwork")
 // const dateSection = document.querySelector("#dates")
 const exhibitionSection = document.querySelector("#exhibitions")
+const artworkHeading = document.querySelector("#artwork-heading")
+const exhibitionHeading = document.querySelector("#exhibition-heading")
 
 /*  =====================
   Async Await functions 
@@ -14,10 +16,10 @@ const exhibitionSection = document.querySelector("#exhibitions")
 async function fetchArtwork() {
   try {
     const response = await fetch(
-      "https://api.artic.edu/api/v1/artworks?fields=title,date_display,artist_title,medium_display,dimensions,is_public_domain,image_id,limit=10&page=3",
+      "https://api.artic.edu/api/v1/artworks?fields=title,date_display,artist_title,medium_display,dimensions,is_public_domain,image_id",
     )
     if (!response.ok) {
-      throw new Error("Request failed" + response.status)
+      throw new Error("Request failed: " + response.status)
     }
 
     const data = await response.json()
@@ -25,19 +27,34 @@ async function fetchArtwork() {
     const artworks = data.data
     const urlBase = data.config.iiif_url
 
+    //clears section
     artworkSection.innerHTML = ""
 
+    //clears other html in section, only showing one section at a time
+    exhibitionSection.innerHTML = ""
+    exhibitionHeading.textContent = ""
+
+    //creates heading for Artwork section
+    artworkHeading.textContent = "Artworks"
+
     artworks.forEach((item) => {
-      // Skips over artworks that are NOT in the public domain
-      if (item.is_public_domain === false) return
+      // Skips over images that are have null, undefined, and missing image_id's
+      if (!item.image_id) return
+      // Skips over images NOT in the public domain
+      if (!item.is_public_domain) return
+
+      const card = document.createElement("div")
+      card.classList.add("art-card")
 
       const imageElement = document.createElement("img")
       imageElement.src = `${urlBase}/${item.image_id}/full/200,/0/default.jpg`
-      artworkSection.appendChild(imageElement)
 
       const artworkElement = document.createElement("p")
-      artworkElement.textContent = `${item.title} (${item.date_display}) by ${item.artist_title}  ${item.medium_display} ${item.dimensions}`
-      artworkSection.appendChild(artworkElement)
+      artworkElement.textContent = `${item.title}\n(${item.date_display})\n${item.artist_title}\n${item.medium_display}\n${item.dimensions}`
+
+      card.appendChild(imageElement)
+      card.appendChild(artworkElement)
+      artworkSection.appendChild(card)
     })
   } catch (error) {
     artworkSection.innerHTML = "ERROR: Something went wrong..."
@@ -59,7 +76,15 @@ async function fetchExhibitions() {
     console.log("exhibitions:", data)
     const exhibitions = data.data
 
+    //clears section
     exhibitionSection.innerHTML = ""
+
+    //clears other html in section, only showing one section at a time
+    artworkSection.innerHTML = ""
+    artworkHeading.textContent = ""
+
+    //creates heading for Exhibitions section
+    exhibitionHeading.textContent = "Exhibitions"
 
     exhibitions.forEach((item) => {
       const exhibitionElement = document.createElement("p")
@@ -81,7 +106,7 @@ async function fetchExhibitions() {
         }
       }
 
-      exhibitionElement.textContent = `${item.title}, ${start} - ${end}`
+      exhibitionElement.textContent = `${item.title}\n${start} - ${end}`
       exhibitionSection.appendChild(exhibitionElement)
     })
   } catch (error) {
@@ -89,13 +114,15 @@ async function fetchExhibitions() {
     console.error("Something went wrong...:", error)
   }
 }
-
-// btn retrieves 1st GET request, endpoint 1
+/*  =====================
+  Button calls to Fetch requests
+  ====================== */
+// btn displays 1st GET request, endpoint 1
 document.querySelector("#btn-artwork").addEventListener("click", () => {
   fetchArtwork()
 })
 
-// btn retrieves 2nd GET request, endpoint 2
+// btn displays 2nd GET request, endpoint 2
 document.querySelector("#btn-exhibitions").addEventListener("click", () => {
   fetchExhibitions()
 })
