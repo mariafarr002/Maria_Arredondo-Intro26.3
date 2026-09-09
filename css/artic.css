@@ -1,0 +1,61 @@
+/* =====================
+  General Styling
+  ====================== */
+body {
+  background-color: #00b7cf;
+  color: #1d2a62;
+  font-family: "Roboto-Serif", serif;
+  margin: 0;
+  line-height: 1.5;
+}
+header {
+  background-color: #00b7cf;
+  color: #ededed;
+  text-align: center;
+  padding: 180px;
+}
+
+header h1 {
+  color: white;
+  font-family: "Darumadrop One", sans;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 90px;
+  line-height: 0.8;
+}
+
+nav {
+  background-color: #ededed;
+  font-family: "Roboto", serif;
+  box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  top: 0;
+  position: sticky;
+  z-index: 100;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
+
+nav a {
+  color: #00b7cf;
+  text-decoration: none;
+  margin: 0 30px;
+  padding: 10px 0;
+}
+
+nav a:hover {
+  color: #1d2a62;
+  font-size: 11px;
+}
+
+img {
+  width: 300px;
+}
