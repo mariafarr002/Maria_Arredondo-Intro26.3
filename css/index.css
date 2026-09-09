@@ -4,7 +4,7 @@
 body {
   background-color: #00b7cf;
   color: #1d2a62;
-  font-family: "Roboto-Serif", serif;
+  font-family: "Roboto Serif", sans-serif;
   margin: 0;
   line-height: 1.5;
 }
@@ -49,7 +49,6 @@ nav a {
 
 nav a:hover {
   color: #1d2a62;
-  font-size: 11px;
 }
 
 .nav-message {
@@ -76,7 +75,7 @@ header h1 {
   font-family: "Darumadrop One", sans;
   font-weight: 400;
   font-style: normal;
-  font-size: 90px;
+  font-size: 70px;
   line-height: 0.8;
 }
 
@@ -97,7 +96,7 @@ header em {
 h2 {
   text-align: center;
   color: #1d2a62;
-  font-size: 40px;
+  font-size: 25px;
   font-family: "Roboto", sans;
   font-weight: bold;
   text-transform: uppercase;

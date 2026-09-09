@@ -4,25 +4,26 @@
 body {
   background-color: #00b7cf;
   color: #1d2a62;
-  font-family: "Roboto-Serif", serif;
+  font-family: "Roboto Serif", sans-serif;
   margin: 0;
   line-height: 1.5;
 }
-header {
-  background-color: #00b7cf;
-  color: #ededed;
+
+p {
+  font-size: 18px;
   text-align: center;
-  padding: 180px;
 }
 
-header h1 {
-  color: white;
-  font-family: "Darumadrop One", sans;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 90px;
-  line-height: 0.8;
+section {
+  padding: 20px;
 }
+
+.break-lines {
+  white-space: pre-line;
+}
+/* =====================
+  Navigation Menu
+  ====================== */
 
 nav {
   background-color: #ededed;
@@ -39,23 +40,126 @@ nav {
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 10px;
 }
 
-nav a {
+nav a,
+nav button {
   color: #00b7cf;
+  background: none;
+  border: none;
   text-decoration: none;
   margin: 0 30px;
   padding: 10px 0;
+  font-family: "Roboto", serif;
+  cursor: pointer;
 }
 
-nav a:hover {
+nav button {
+  font-size: 18px;
+}
+
+nav a:hover,
+nav button:hover {
   color: #1d2a62;
-  font-size: 11px;
 }
 
-img {
-  width: 300px;
+/* =====================
+  Header/Buttons
+  ====================== */
+header {
+  background-color: #00b7cf;
+  color: #ededed;
+  text-align: center;
+  padding: 90px;
+}
+
+header h1 {
+  color: white;
+  font-family: "Darumadrop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  line-height: 0.8;
+}
+
+/* =====================
+  Headings
+  ====================== */
+
+h2 {
+  text-align: center;
+  color: #1d2a62;
+  font-size: 20px;
+  font-family: "Roboto", sans;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* =====================
+  Artwork Grid
+  ====================== */
+#artwork {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.art-card {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.art-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+.art-card img:hover {
+  transform: scale(1.05);
+}
+
+.art-card p {
+  font-size: 0.9rem;
+  line-height: 2;
+}
+
+/* =====================
+  Exhibtion Section
+  ====================== */
+#exhibitions {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#exhibitions p {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+#exhibitions {
+  border-radius: 20px;
+  padding: 40px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#exhibitions p {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
 }
