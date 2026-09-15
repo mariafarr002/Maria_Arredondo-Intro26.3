@@ -1,165 +1,179 @@
-/* =====================
-  General Styling
-  ====================== */
+/* ===========================
+   General styling
+   =========================== */
+/* color palette */
+:root {
+  --ink: #1a1a1a;
+  --soft-ink: #444444cf;
+  --accent: #8b0000;
+  --border: #d8d8d8;
+  --bg: #ededed;
+}
+
 body {
-  background-color: #00b7cf;
-  color: #1d2a62;
-  font-family: "Roboto Serif", sans-serif;
   margin: 0;
-  line-height: 1.5;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "Roboto Serif", serif;
+  line-height: 1.6;
 }
 
 p {
-  font-size: 18px;
-  text-align: center;
-}
-
-section {
-  padding: 20px;
-}
-
-.break-lines {
   white-space: pre-line;
+  font-size: 14px;
 }
-/* =====================
+
+/* ===========================
   Navigation Menu
-  ====================== */
+   =========================== */
+.site-nav {
+  border-bottom: 1px solid var(--border);
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0 70px;
+  gap: 20px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: var(--soft-ink);
+}
 
 nav {
-  background-color: #ededed;
-  font-family: "Roboto", serif;
-  box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
-
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  top: 0;
-  position: sticky;
-  z-index: 100;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  margin-left: auto;
 }
 
-nav a,
-nav button {
-  color: #00b7cf;
-  background: none;
-  border: none;
+nav a {
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
-  margin: 0 30px;
-  padding: 10px 0;
-  font-family: "Roboto", serif;
-  cursor: pointer;
+  color: var(--ink);
+  font-size: 13px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
 }
 
-nav button {
-  font-size: 18px;
+nav a:hover {
+  border-color: var(--accent);
 }
 
-nav a:hover,
-nav button:hover {
-  color: #1d2a62;
-}
-
-/* =====================
-  Header/Buttons
-  ====================== */
-header {
-  background-color: #00b7cf;
-  color: #ededed;
+/* ===========================
+   Intro section
+   =========================== */
+.intro {
+  max-width: 750px;
+  margin: 64px auto 48px;
+  padding: 0 24px;
   text-align: center;
-  padding: 90px;
 }
 
-header h1 {
-  color: white;
-  font-family: "Darumadrop One", sans-serif;
+.intro h1 {
+  font-size: clamp(32px, 5vw, 45px);
+  margin: 8px;
   font-weight: 400;
-  font-style: normal;
-  font-size: 70px;
-  line-height: 0.8;
 }
 
-/* =====================
-  Headings
-  ====================== */
-
-h2 {
-  text-align: center;
-  color: #1d2a62;
-  font-size: 20px;
-  font-family: "Roboto", sans;
-  font-style: italic;
-  text-transform: uppercase;
+.intro p {
+  color: var(--soft-ink);
 }
 
-/* =====================
-  Artwork Grid
-  ====================== */
-#artwork {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
+/* ===========================
+   Collection section
+   =========================== */
+
+.collection-section {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 24px;
 }
 
-.art-card {
-  background: #fafafa;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+.btns {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  gap: 16px;
+  justify-content: center;
+  padding-bottom: 32px;
 }
 
-.art-card img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-  transition: transform 0.3s ease;
-}
-.art-card img:hover {
-  transform: scale(1.05);
-}
-
-.art-card p {
-  font-size: 0.9rem;
-  line-height: 2;
-}
-
-/* =====================
-  Exhibtion Section
-  ====================== */
-#exhibitions {
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#exhibitions p {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-}
-
-#exhibitions {
-  border-radius: 20px;
-  padding: 40px;
-  margin: 0 auto;
-  width: 90%;
-}
-
-#exhibitions p {
+.btns button {
   background: white;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
+  border: 1px solid var(--border);
+  padding: 12px 24px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btns button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.collection-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.collection-heading h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 8px 0;
+}
+
+/* ===========================
+   Artwork and Exhibition info
+   =========================== */
+/* info section where api results will appear */
+
+#info {
+  font-family: "Roboto Serif", serif;
+  color: var(--soft-ink);
+  margin-top: 16px;
+  min-height: 150px;
+}
+
+#info p {
+  background: white;
+  padding: 16px;
+  border-left: 3px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+#info p:first-line {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ===========================
+   Mobile changes
+   =========================== */
+
+@media (max-width: 600px) {
+  .site-nav {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .intro h1 {
+    font-size: 36px;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
 }
