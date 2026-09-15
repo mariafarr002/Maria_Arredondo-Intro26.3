@@ -1,286 +1,286 @@
 /* =====================
-  General Styling
+  General styling
   ====================== */
+:root {
+  --navy: #1d2a62;
+  --cyan: #00b7cf;
+  --green: #6daf5f;
+  --bg: #ededed;
+
+  --text-muted: #657080;
+  --border: #d8dce5;
+
+  --shadow: 0 8px 22px rgba(29, 42, 98, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #00b7cf;
-  color: #1d2a62;
-  font-family: "Roboto Serif", sans-serif;
   margin: 0;
-  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--navy);
+  font-family: "Roboto Serif", serif;
+  line-height: 1.6;
 }
 
 p {
-  font-size: 18px;
+  white-space: pre-line;
+}
+
+main {
+  margin: 0;
 }
 
 section {
-  padding: 10px;
+  padding: 65px 7%;
 }
 
-/* =====================
-  Navigation Menu
-  ====================== */
-nav {
-  background-color: #ededed;
-  font-family: "Roboto", serif;
-  box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
-
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  top: 0;
-  position: sticky;
-  z-index: 100;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px;
+section h2 {
+  margin: 0 0 30px;
 }
 
-nav a {
-  color: #00b7cf;
-  text-decoration: none;
-  margin: 0 30px;
-  padding: 10px 0;
-}
-
-nav a:hover {
-  color: #1d2a62;
-}
-
-.nav-message {
-  border-radius: 50px;
-  border: #00b7cf 5px solid;
-  margin-left: auto;
-  padding: 10px 0;
-}
-
-/* =====================
-  Title/Header
-  ====================== */
-header {
-  background-color: #00b7cf;
-  color: #ededed;
-  text-align: right;
-  padding: 180px;
-  background: url("../images/art2.png") no-repeat left / cover;
-
-  background-size: 650px;
-}
-
-header h1 {
-  font-family: "Darumadrop One", sans;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 70px;
-  line-height: 0.8;
-}
-
-header p {
-  letter-spacing: 2px;
-  padding: 0 30px;
-  margin-top: 0;
-}
-
-header em {
-  color: #fed85d;
-  font-size: 120px;
-}
-
-/* =====================
-  Headings
-  ====================== */
 h2 {
-  text-align: center;
-  color: #1d2a62;
-  font-size: 25px;
-  font-family: "Roboto", sans;
-  font-weight: bold;
-  text-transform: uppercase;
+  color: var(--navy);
+  font-size: 30px;
+  line-height: 1.2;
 }
 
 h3 {
-  font-size: 26px;
+  font-size: 17px;
+  line-height: 1.3;
+}
+/* =====================
+  Navigation Menu
+  ====================== */
+
+.site-nav {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 7%;
+  gap: 20px;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: var(--navy);
+  background: var(--bg) url("../images/logo.png") no-repeat top left / 150px;
+}
+
+.logo {
+  width: 45px;
+  margin: 0;
+}
+
+nav {
+  margin-left: auto;
+}
+
+nav a {
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 0 10px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+nav a:hover {
+  border-color: var(--accent);
+}
+
+/* =====================
+  Intro header
+  ====================== */
+.intro {
+  color: #ededed;
+  padding: 80px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--cyan) url("../images/art2.png") no-repeat top left / 150px;
+}
+
+.intro h1 {
+  align-self: center;
+  margin: 0 0 20px;
+  font-family: "Darumadrop One", sans-serif;
+  font-weight: 600;
+  font-size: clamp(45px, 5vw, 57px);
+  line-height: 1;
 }
 
 /*  =====================
-  About
+  About section
   ====================== */
-#About {
-  background: url("../images/art1.png") no-repeat top right / cover;
-  background-size: 350px;
 
-  background-color: #ededed;
+.about-row {
+  max-width: 1050px;
+  margin: 0 auto;
+
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  align-items: center;
   justify-content: center;
-  padding: 60px;
-  margin-bottom: -20px;
-}
-
-#About h2 {
-  color: #1d2a62;
-  text-align: left;
-  padding: 0 30px;
-}
-
-#About h3 {
-  text-align: left;
-  font-style: italic;
-  text-transform: uppercase;
-  color: #6daf5f;
-  padding: 0 30px;
+  gap: 45px;
+  padding: 10px 0 25px;
 }
 
 .profile-pic {
+  width: 330px;
+  height: 430px;
+  border-radius: 8%;
   object-fit: cover;
-  flex: 1;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-}
-
-#About p {
-  font-size: 20px;
-  padding: 10px;
-}
-
-#About em {
-  color: #6daf5f;
+  box-shadow: var(--shadow);
 }
 
 .about-column {
-  color: #239dca;
-
-  text-align: left;
-  padding: 50px;
-  flex: 1;
-  max-width: 500px;
+  background: url("../images/art1.png") no-repeat top right / 150px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
+}
+
+.greeting {
+  font-family: "Darumadrop One", sans-serif;
+  font-size: 22px;
+  color: var(--green);
+  margin-bottom: 5px;
+}
+
+.p-about {
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+
+#About em {
+  font-style: italic;
 }
 
 .quote-container {
-  background-color: #6daf5f;
-  margin: 20px auto;
-  padding: 30px;
-  position: relative;
-  z-index: 99;
-}
-
-.quote {
-  font-size: 20px;
   color: #ededed;
-  position: relative;
-  align-items: center;
-  font-family: "Roboto-Serif", sans;
+  background-color: var(--green);
+  text-align: center;
   font-style: italic;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 5px;
+  font-size: 12px;
 }
 
 /*  =====================
-  Experience
+  Experience section
   ====================== */
 #Experience {
-  margin-top: -33px;
-  background: linear-gradient(#ededed 40%, #00b7cf 60%);
-  padding: 40px 0;
+  background-color: #e3e5eb;
 }
 
-#Experience ul {
-  list-style: none;
-  padding: 0;
-}
-
-#Experience li {
-  text-align: center;
-  padding: 25px;
-  margin: 15px 0;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+#Experience .exp-title {
+  max-width: 1050px;
+  margin: 0 auto 30px;
 }
 
 .exp-columns {
+  max-width: 1050px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 40px;
+  gap: 25px;
 }
 
-/*  =====================
-  Education Rows
-  ====================== */
-
-.education {
-  flex: 1;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-}
-
-.ed-column {
-  color: #1d2a62;
-}
-
-.ed-list li {
-  background-color: #ededed;
-}
-
-/*  =====================
-  Work Rows
-  ====================== */
+.education,
 .work {
   flex: 1;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
+  background-color: white;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
 }
 
-.work-column {
-  color: #1d2a62;
+.education h3,
+.work h3 {
+  color: var(--navy);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.work-list li {
-  background-color: #ededed;
+.education h4,
+.work h4 {
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.education p,
+.work p {
+  font-size: 12px;
+}
+
+#Experience ul {
+  padding-left: 20px;
+}
+
+#Experience li {
+  font-family: "Roboto", sans-serif;
+  padding: 3px 0;
+  margin: 6px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-muted);
+  list-style: circle;
 }
 
 /*  =====================
-  Skills
+  Skills section
   ====================== */
 
-#Skills {
-  background-color: #ededed;
-  padding: 40px;
-}
-
 #Skills ul {
-  border-radius: 5px;
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  padding: 10px;
+  gap: 8px;
 }
 
 #Skills li {
-  border-radius: 10px;
-  background-color: #00b7cf;
   list-style: none;
-  padding: 10px 20px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--green);
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  box-shadow: 0 3px 8px rgba(109, 175, 95, 0.2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#Skills li:hover {
+  transform: translateY(-4px);
+}
+
+#Skills h2,
+#Projects h2 {
+  text-align: center;
 }
 /*  =====================
-  Projects
+  Projects section
   ====================== */
 
 #Projects {
-  background-color: #ededed;
-  padding: 40px;
+  background-color: #e3e5eb;
 }
 
 #Projects ul {
@@ -289,221 +289,317 @@ h3 {
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  max-width: 1050px;
 }
 
 #Projects li {
-  border-radius: 10px;
-  background-color: #00b7cf;
+  font-family: "Roboto", sans-serif;
   list-style: none;
-  padding: 100px;
+  min-height: 170px;
+  padding: 22px;
+
+  color: var(--navy);
+  background-color: var(--cyan);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#Projects li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 3px 8px rgba(109, 175, 95, 0.2);
+}
+
+#Projects li h3 {
+  margin-top: 0;
+  color: var(--navy);
+  font-size: 16px;
 }
 
 /*  =====================
-  Connect
+  Contact Me section
   ====================== */
-#Connect {
-  background-color: #1d2a62;
-  justify-content: center;
+#Contact-Me {
+  background-color: var(--navy);
+  text-align: center;
+  padding: 50px 7%;
 }
 
-#Connect h2 {
-  color: #ededed;
+#Contact-Me h2 {
+  color: var(--bg);
 }
 
-#Connect a {
+#Contact-Me a {
   text-decoration: none;
 }
 
+#Contact-Me a:hover {
+  text-decoration: underline;
+}
+
+/*  =====================
+  Social media links
+  ====================== */
 .links {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 12px;
+  padding: 10px;
+}
+
+.github,
+.linkedin {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
 .github {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
   background-image: url("../images/github.png");
-  background-size: contain;
-  background-repeat: no repeat;
-
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .linkedin {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
   background-image: url("../images/linkedin.png");
-  background-size: contain;
-  background-repeat: no repeat;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+}
+
+.github:hover,
+.linkedin:hover {
+  transform: scale(1.1);
 }
 
 /*  =====================
   Leave A Message form
   ====================== */
 #Leave-a-Message {
-  background: linear-gradient(to right, #26367e 50%, white 50%);
-  color: white;
-  flex: 1;
+  max-width: 1050px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  color: var(--navy);
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  margin-left: auto;
-}
-.email-icon {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-  margin: 10%;
-  overflow: hidden;
+  padding: 60px 7%;
 }
 
 #Leave-a-Message h2 {
-  font-style: italic;
-  padding: 20px 20px;
-  margin-right: auto;
+  color: var(--navy);
+  font-style: normal;
+  padding: 0;
+  margin: 0 0 25px;
 }
 
 #Leave-a-Message label {
-  display: inline-block;
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--navy);
 }
 
-#Leave-a-Message input {
-  margin: 10px 18px;
-  padding: 10px 60px;
+#Leave-a-Message input,
+#Leave-a-Message textarea {
+  width: 100%;
+  border: 1px solid #c7ccd9;
+  border-radius: 6px;
+  background-color: white;
+  padding: 11px 13px;
+  margin: 0 0 16px;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  outline: 2px solid lightblue;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#Leave-a-Message input:focus,
+#Leave-a-Message textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: var(--shadow);
 }
 
 #Leave-a-Message textarea {
-  margin: 10px 0;
-  padding: 60px;
+  min-height: 120px;
+  /* allows user to resize vertically */
+  resize: vertical;
 }
 
 #Leave-a-Message button {
-  color: #1d2a62;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 15px;
-  padding: 10px 100px;
-  margin: 6% 17%;
+  align-self: flex-start;
+  color: white;
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s ease;
 }
 
 #Leave-a-Message button:hover {
-  color: #00b7cf;
+  color: white;
+  background-color: #57974e;
+  transform: translateY(-2px);
 }
 
 /*  =====================
   Message Section
   ====================== */
 #messages li {
-  background-color: white;
+  max-width: 900px;
+  margin: 10px auto;
   list-style: none;
   text-align: center;
   padding: 15px;
-  margin: 0 30px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  box-shadow: var(--shadow);
+  font-size: 12px;
 }
-/*#messages ul:hover {
-    color:#1d2a62;
-  }*/
 
 #messages a {
-  color: #6daf5f;
+  color: var(--green);
   text-decoration: none;
-  padding: 0 30px;
+  padding: 0 15px;
+}
+
+#messages a:hover {
+  color: var(--navy);
 }
 
 #messages button {
-  color: #1d2a62;
+  background-color: white;
+  color: var(--navy);
+  border: 1px solid var(--navy);
   font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 15px;
-  padding: 10px;
-  margin: 0 30px;
+  border-radius: 5px;
+  padding: 7px 12px;
+  margin: 0 10px;
 }
 
 #messages button:hover {
-  color: #00b7cf;
+  color: white;
+  background-color: var(--navy);
 }
 
-/* ----- Mobile Phones (up to 400px) ----- */
-@media all and (max-width: 400px) {
-  .nav-message {
-    justify-content: flex-start;
-    margin-right: auto;
-    margin: 10px 0;
-  }
-}
-
-/* ----- Mobile Phones (up to 600px) ----- */
-@media all and (max-width: 600px) {
-  .profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* this area sizes down elements and images, sizing up spacing between elements where necessary */
+/*  =====================
+  Tablet/Mobile (700px or smaller screens)
+  ====================== */
+@media (max-width: 700px) {
+  /* Smaller nav padding */
+  .site-nav {
+    padding: 15px 5%;
   }
 
-  #Leave-a-Message {
-    padding: 20px;
+  /* Bigger nav text */
+  nav a {
+    font-size: 14px;
+    padding: 0 4px;
   }
 
-  #Leave-a-Message h2 {
-    margin: 0;
-    padding: 20px 0;
-    font-size: 26px;
+  .intro {
+    min-height: 350px;
+    padding: 60px 7%;
+    align-items: center;
     text-align: center;
   }
 
-  #Leave-a-Message label {
-    margin: 10px 0;
-    font-size: 18px;
+  .about-row {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
   }
 
-  #Leave-a-Message input,
-  #Leave-a-Message textarea {
-    width: 100%;
-    padding: 18px;
-    margin: 10px 0;
-    font-size: 18px;
-    border-radius: 10px;
+  .about-column {
+    text-align: left;
   }
 
-  #Leave-a-Message textarea {
-    min-height: 150px;
+  .profile-pic {
+    width: 250px;
+    height: 300px;
+  }
+
+  /* stacks work and edu columns on top of one another */
+  .exp-columns {
+    flex-direction: column;
+  }
+
+  .education,
+  .work {
+    max-width: none;
+  }
+
+  /* stacks columns into one single column */
+  /* #Projects ul {
+    grid-template-columns: 1fr;
+  } */
+
+  #Projects li {
+    min-height: 140px;
+    margin: 10px;
+  }
+
+  section {
+    padding: 50px 6%;
+  }
+
+  /*  =====================
+  Message form mobile
+  ====================== */
+
+  #Leave-a-Message {
+    padding: 45px 6%;
   }
 
   #Leave-a-Message button {
+    /* makes button bigger on phones */
     width: 100%;
-    padding: 18px;
-    margin: 20px 0;
-    font-size: 20px;
-    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* hides img on smaller screens */
+  .site-nav {
+    background: var(--bg);
+  }
+}
+
+/*  =====================
+  Smaller Mobiles (400px or smaller screens)
+  ====================== */
+@media (max-width: 400px) {
+  /*
+Stacks logo and nav when screen becomes smaller
+*/
+  .site-nav {
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg);
   }
 
-  .email-icon {
-    width: 250px;
-    height: 250px;
-    margin: 20px auto;
+  nav {
+    margin: 0;
   }
 
-  #messages li {
-    margin: 10px 0;
-    padding: 20px;
-    font-size: 18px;
+  h2 {
+    font-size: 25px;
   }
 
-  #messages button {
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    font-size: 18px;
+  .profile-pic {
+    width: 220px;
+    height: 270px;
   }
 }

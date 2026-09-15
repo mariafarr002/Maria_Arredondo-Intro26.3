@@ -1,11 +1,11 @@
 /*  =====================
   Global variables for sections
   ====================== */
-const artworkSection = document.querySelector("#artwork")
-// const dateSection = document.querySelector("#dates")
-const exhibitionSection = document.querySelector("#exhibitions")
-const artworkHeading = document.querySelector("#artwork-heading")
-const exhibitionHeading = document.querySelector("#exhibition-heading")
+const collectionSection = document.querySelector(".collection-section")
+// const collectionHeading = document.querySelector(".collection-heading")
+const artworkTitle = document.querySelector("#artwork-title")
+const exhibitionTitle = document.querySelector("#exhibition-title")
+const collectionInfo = document.querySelector("#info")
 
 /*  =====================
   Async Await functions 
@@ -13,10 +13,11 @@ const exhibitionHeading = document.querySelector("#exhibition-heading")
   ====================== */
 
 // 1st GET request, endpoint 1
+// sends request to api server, returns back JSON data which is parsed through
 async function fetchArtwork() {
   try {
     const response = await fetch(
-      "https://api.artic.edu/api/v1/artworks?fields=title,date_display,artist_title,medium_display,dimensions,is_public_domain,image_id",
+      "https://api.artic.edu/api/v1/artworks?fields=title,date_display,artist_title,medium_display,dimensions,is_public_domain",
     )
     if (!response.ok) {
       throw new Error("Request failed: " + response.status)
@@ -25,39 +26,36 @@ async function fetchArtwork() {
     const data = await response.json()
     console.log("artworks:", data)
     const artworks = data.data
-    const urlBase = data.config.iiif_url
 
-    //clears section
-    artworkSection.innerHTML = ""
+    //clears section first
+    collectionInfo.innerHTML = ""
+    artworkTitle.textContent = ""
+    exhibitionTitle.textContent = ""
 
-    //clears other html in section, only showing one section at a time
-    exhibitionSection.innerHTML = ""
-    exhibitionHeading.textContent = ""
-
-    //creates heading for Artwork section
-    artworkHeading.textContent = "Artworks"
+    //creates heading for Artwork
+    artworkTitle.textContent = "About artworks"
 
     artworks.forEach((item) => {
-      // Skips over images that are have null, undefined, and missing image_id's
-      if (!item.image_id) return
-      // Skips over images NOT in the public domain
-      if (!item.is_public_domain) return
-
-      const card = document.createElement("div")
-      card.classList.add("art-card")
-
-      const imageElement = document.createElement("img")
-      imageElement.src = `${urlBase}/${item.image_id}/full/200,/0/default.jpg`
-
+      // Labels any images in the public domain
+      let domainLabel = ""
+      if (item.is_public_domain) {
+        domainLabel = "Public Domain"
+      }
+      // labels null(missing) items as "unknown" in artist titles
+      let artist = ""
+      if (!item.artist_title) {
+        artist = "Unknown Artist"
+      } else {
+        artist = item.artist_title
+      }
+    // 
       const artworkElement = document.createElement("p")
-      artworkElement.textContent = `${item.title}\n(${item.date_display})\n${item.artist_title}\n${item.medium_display}\n${item.dimensions}`
-
-      card.appendChild(imageElement)
-      card.appendChild(artworkElement)
-      artworkSection.appendChild(card)
+      artworkElement.textContent = `${item.title}\n${item.date_display}\n${artist}\n${item.medium_display}\n${item.dimensions}\n${domainLabel}`
+      collectionInfo.appendChild(artworkElement)
     })
+    // catches any errors or bad responses from server of api fetch request
   } catch (error) {
-    artworkSection.innerHTML = "ERROR: Something went wrong..."
+    collectionInfo.innerHTML = "ERROR: Something went wrong..."
     console.error("Something went wrong...:", error)
   }
 }
@@ -71,26 +69,26 @@ async function fetchExhibitions() {
     if (!response.ok) {
       throw new Error("Request failed" + response.status)
     }
-
+    // returns reponse of JSON data and running an if statement to check if request was successful or not
+    // if not, throws error message with "Request failed" followed by error occurred
     const data = await response.json()
     console.log("exhibitions:", data)
     const exhibitions = data.data
 
-    //clears section
-    exhibitionSection.innerHTML = ""
+    //clears section first
+    collectionInfo.innerHTML = ""
+    artworkTitle.textContent = ""
+    exhibitionTitle.textContent = ""
 
-    //clears other html in section, only showing one section at a time
-    artworkSection.innerHTML = ""
-    artworkHeading.textContent = ""
+    //creates heading for Exhibitions
+    exhibitionTitle.textContent = "Exhibitions"
 
-    //creates heading for Exhibitions section
-    exhibitionHeading.textContent = "Exhibitions"
-
+    //loops iterates through repo array
     exhibitions.forEach((item) => {
       const exhibitionElement = document.createElement("p")
 
       // makes date data from API legible and looks out for unavailable dates
-      // sends message if date is null, undefined, or missing
+      // appends message if date is null, undefined, or missing
       let start = "No start date available"
       if (item.aic_start_at) {
         const startDate = new Date(item.aic_start_at)
@@ -105,24 +103,28 @@ async function fetchExhibitions() {
           end = endDate.toLocaleDateString()
         }
       }
-
+    // adds title and date of exhibition to exhibition section
       exhibitionElement.textContent = `${item.title}\n${start} - ${end}`
-      exhibitionSection.appendChild(exhibitionElement)
+      collectionInfo.appendChild(exhibitionElement)
     })
+    // catches any errors from server from api fetch request
   } catch (error) {
-    exhibitionSection.innerHTML = "ERROR: Something went wrong..."
+    collectionInfo.innerHTML = "ERROR: Something went wrong..."
     console.error("Something went wrong...:", error)
   }
 }
 /*  =====================
   Button calls to Fetch requests
   ====================== */
-// btn displays 1st GET request, endpoint 1
+
+// btn displays 1st GET request, endpoint 1 (general artwork info)
 document.querySelector("#btn-artwork").addEventListener("click", () => {
   fetchArtwork()
+  collectionInfo.classList.toggle("show")
 })
 
-// btn displays 2nd GET request, endpoint 2
+// btn displays 2nd GET request, endpoint 2 (past exhibtions info)
 document.querySelector("#btn-exhibitions").addEventListener("click", () => {
   fetchExhibitions()
+  collectionInfo.classList.toggle("show")
 })
